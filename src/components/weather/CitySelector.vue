@@ -11,7 +11,6 @@
       </li>
     </ul>
   </div>
-  <button class="city-button" @click="city"></button>
 </template>
 
 <script>
