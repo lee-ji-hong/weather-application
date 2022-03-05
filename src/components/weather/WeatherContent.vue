@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import weatherMixin from "@/mixins/weatherMixin.js";
 import ContentHeader from "./ContentHeader.vue";
 import CitySelector from "./CitySelector.vue";
 import WeatherList from "./WeatherList.vue";
@@ -18,6 +19,7 @@ export default {
     CitySelector,
     WeatherList,
   },
+  mixins: [weatherMixin],
   data() {
     return {
       weatherList: [],
@@ -26,7 +28,8 @@ export default {
   methods: {
     selectCity(city) {
       if (city.selected === true) {
-        this.weatherList.push(city);
+        const weather = this.getWeatherInfo(city);
+        this.weatherList.push(weather);
       } else {
         const index = this.weatherList.findIndex(
           (weather) => weather.code === city.code
