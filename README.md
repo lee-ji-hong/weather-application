@@ -1,5 +1,7 @@
 # weather-application
 
+https://lee-ji-hong.github.io
+
 ## Project setup
 ```
 yarn install
