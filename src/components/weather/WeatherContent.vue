@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="weather-wrapper">
     <ContentHeader />
-    <CitySelector />
-    <WeatherList />
+    <CitySelector @selectCity="selectCity" />
+    <WeatherList :weatherList="weatherList" />
   </div>
 </template>
 
@@ -17,6 +17,23 @@ export default {
     ContentHeader,
     CitySelector,
     WeatherList,
+  },
+  data() {
+    return {
+      weatherList: [],
+    };
+  },
+  methods: {
+    selectCity(city) {
+      if (city.selected === true) {
+        this.weatherList.push(city);
+      } else {
+        const index = this.weatherList.findIndex(
+          (weather) => weather.code === city.code
+        );
+        this.weatherList.splice(index, 1);
+      }
+    },
   },
 };
 </script>

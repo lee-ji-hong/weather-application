@@ -1,11 +1,11 @@
 <template>
   <div>
     <ul class="weather-list">
-      <WeatherItem />
-      <WeatherItem />
-      <WeatherItem />
-      <WeatherItem />
-      <WeatherItem />
+      <WeatherItem
+        v-for="weather in weatherList"
+        :key="weather.code"
+        :weather="weather"
+      />
     </ul>
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
   name: "WeatherList",
   components: {
     WeatherItem,
+  },
+  props: {
+    weatherList: Array,
   },
 };
 </script>
