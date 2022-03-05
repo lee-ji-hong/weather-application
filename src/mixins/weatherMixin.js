@@ -9,7 +9,19 @@ const weatherMixin = {
       const API_KEY = "559ceab537cdee707f783e5c8f141a38";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.code}&appid=${API_KEY}`;
       const res = await axios.get(url);
-      return res.data;
+      const { main, wind, weather } = res.data;
+      const weatherResult = {
+        label: city.label,
+        code: city.code,
+        temperature: this.displayTemerature(main.temp),
+        humidity: main.humidity,
+        wind: wind.speed,
+        icon: `https://openweathermap.org/img/wn/${weather[0].icon}.png`,
+      };
+      return weatherResult;
+    },
+    displayTemerature(temperature) {
+      return (temperature - 273.15).toFixed(1);
     },
   },
 };

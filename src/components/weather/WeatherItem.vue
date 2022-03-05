@@ -1,9 +1,9 @@
 <template>
   <li class="weather-item">
     <h3>{{ weather.label }}</h3>
-    <p class="temperature">{{ weather.temperature }}&deg;C</p>
+    <p class="temperature">{{ weather.temperature }} &deg;C</p>
     <p class="info">
-      <img src="https://placeimg.com/20/20/any" alt="any" />
+      <img :src="weather.icon" alt="any" />
       <span>습도 {{ weather.humidity }}</span>
       <span>바람 {{ weather.wind }}m/s</span>
     </p>
